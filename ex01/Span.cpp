@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42lehavre.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 18:20:32 by lomont            #+#    #+#             */
-/*   Updated: 2026/01/10 04:56:10 by lomont           ###   ########.fr       */
+/*   Updated: 2026/01/11 03:17:42 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,15 @@ int Span::longestSpan( void ) {
 }
 
 void Span::addNumberRandomnly( void ) {
-	int *ptr = new int[_maxNumbers];
+	int *ptr;
+	ptr = new int[_maxNumbers];
 	if (!ptr)
 		return ;
+	srand(time(NULL));
 	for (size_t i = 0; i < _maxNumbers; i++) {
-		ptr[i] = i;
+		ptr[i] = rand() % 20000;
 	}
 	this->assign(&ptr[0], &ptr[_maxNumbers]);
+	delete[] ptr;
 	return ;
-	//TODO add random number generation
 }

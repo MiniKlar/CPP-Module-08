@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42lehavre.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 18:20:30 by lomont            #+#    #+#             */
-/*   Updated: 2026/01/10 04:28:00 by lomont           ###   ########.fr       */
+/*   Updated: 2026/01/10 17:52:51 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 #include <iostream>
 #include <list>
 #include <climits>
-
-#include <vector>
+#include <cstdlib>
+#include <ctime>
 
 class Span : public std::list<int>
 {
