@@ -6,11 +6,31 @@
 /*   By: lomont <lomont@student.42lehavre.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 18:20:32 by lomont            #+#    #+#             */
-/*   Updated: 2026/01/11 03:17:42 by lomont           ###   ########.fr       */
+/*   Updated: 2026/01/11 20:00:40 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
+
+//Exception definition
+
+const char * Span::SpanNotFound::what( void ) const throw() {
+	return ( "No span found, make sure to add, at least, 2 numbers." );
+}
+
+Span::SpanNotFound::~SpanNotFound( void ) throw() {
+	return ;
+}
+
+const char * Span::MaxSpanReached::what( void ) const throw() {
+	return ( "You have reached the Span's maximum capacity, error!" );
+}
+
+Span::MaxSpanReached::~MaxSpanReached( void ) throw() {
+	return ;
+}
+
+//Canonical form
 
 Span::Span( void ) : _maxNumbers(10)
 {
@@ -24,21 +44,19 @@ Span::Span( unsigned int n ) : _maxNumbers(n) {
 }
 
 Span::Span(const Span& src) : std::list<int>(src) {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Span Copy constructor called" << std::endl;
 	this->_maxNumbers = src._maxNumbers;
-	//need to check if the copy constructor deep copied
 	return ;
 }
 
 Span& Span::operator=(const Span& other) {
+	std::cout << "Span assignment operator called" << std::endl;
 	if (this != &other) {
 		this->_maxNumbers = other._maxNumbers;
 	}
-	//need to deep copy the list.
+	this->assign(other.begin(), other.end());
 	return (*this);
 }
-
-//TODO implement correctly the list inheritance
 
 Span::~Span( void )
 {
@@ -48,17 +66,18 @@ Span::~Span( void )
 
 void Span::addNumber( int n ) {
 	if (this->size() == _maxNumbers)
-		throw std::exception();
+		throw MaxSpanReached();
 	else
 		this->push_front(n);
 	return ;
 };
 
 int Span::shortestSpan( void ) {
-	int span = INT_MAX;
-	if (_maxNumbers < 2) {
-		throw (std::exception());
-	}
+	int span;
+
+	if (_maxNumbers < 2)
+		throw SpanNotFound();
+	span = INT_MAX;
 	this->sort();
 	for (std::list<int>::reverse_iterator it = this->rbegin(); it != this->rend(); it++) {
 		for (std::list<int>::iterator ite = this->begin(); ite != this->end(); ite++) {
@@ -72,15 +91,15 @@ int Span::shortestSpan( void ) {
 }
 
 int Span::longestSpan( void ) {
-	if (_maxNumbers < 2) {
-		throw (std::exception());
-	}
+	if (_maxNumbers < 2)
+		throw SpanNotFound();
 	this->sort();
-	return (*(--this->end()) - *(this->begin()));
+	return (*max_element(begin(), end()) - *min_element(begin(), end()));
 }
 
 void Span::addNumberRandomnly( void ) {
 	int *ptr;
+
 	ptr = new int[_maxNumbers];
 	if (!ptr)
 		return ;

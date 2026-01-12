@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42lehavre.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 18:20:30 by lomont            #+#    #+#             */
-/*   Updated: 2026/01/10 17:52:51 by lomont           ###   ########.fr       */
+/*   Updated: 2026/01/11 19:52:24 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 #define SPAN_HPP
 
 #include <iostream>
+#include <algorithm>
 #include <list>
+#include <exception>
 #include <climits>
 #include <cstdlib>
 #include <ctime>
@@ -26,6 +28,18 @@ class Span : public std::list<int>
 	private:
 		unsigned int _maxNumbers;
 	public:
+		class SpanNotFound : public std::exception
+		{
+			public:
+				virtual const char* what( void ) const throw();
+				virtual ~SpanNotFound( void ) throw();
+		};
+		class MaxSpanReached : public std::exception
+		{
+			public:
+				virtual const char* what( void ) const throw();
+				virtual ~MaxSpanReached( void ) throw();
+		};
 
 		//Canonical form
 		Span( void );
