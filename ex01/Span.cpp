@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42lehavre.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 18:20:32 by lomont            #+#    #+#             */
-/*   Updated: 2026/01/11 20:00:40 by lomont           ###   ########.fr       */
+/*   Updated: 2026/01/17 02:45:13 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,18 +64,20 @@ Span::~Span( void )
 	return ;
 }
 
+//Member functions
+
 void Span::addNumber( int n ) {
 	if (this->size() == _maxNumbers)
 		throw MaxSpanReached();
 	else
 		this->push_front(n);
 	return ;
-};
+}
 
 int Span::shortestSpan( void ) {
 	int span;
 
-	if (_maxNumbers < 2)
+	if (_maxNumbers < 2 || size() < 2)
 		throw SpanNotFound();
 	span = INT_MAX;
 	this->sort();
