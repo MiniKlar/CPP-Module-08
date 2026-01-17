@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: lomont <lomont@student.42lehavre.fr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/01/07 23:10:27 by lomont            #+#    #+#              #
-#    Updated: 2026/01/17 02:45:57 by lomont           ###   ########.fr        #
+#    Created: 2026/01/12 22:58:42 by lomont            #+#    #+#              #
+#    Updated: 2026/01/17 02:40:23 by lomont           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = EasyFind
+NAME = MutantStack
 
 C++ = g++-15
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic

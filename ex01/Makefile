@@ -6,14 +6,14 @@
 #    By: lomont <lomont@student.42lehavre.fr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/09 18:20:36 by lomont            #+#    #+#              #
-#    Updated: 2026/01/09 18:43:10 by lomont           ###   ########.fr        #
+#    Updated: 2026/01/17 02:41:01 by lomont           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = Span
 
 C++ = g++-15
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 
 RM = rm -f
 
