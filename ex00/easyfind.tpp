@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42lehavre.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 23:10:45 by lomont            #+#    #+#             */
-/*   Updated: 2026/01/11 19:41:20 by lomont           ###   ########.fr       */
+/*   Updated: 2026/01/17 02:46:07 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,4 @@ int	easyfind(T vector, int i) {
 	if (it == vector.end())
 		throw std::exception();
 	return (*it);
-};
+}
