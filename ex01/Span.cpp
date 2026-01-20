@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42lehavre.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 18:20:32 by lomont            #+#    #+#             */
-/*   Updated: 2026/01/17 02:45:13 by lomont           ###   ########.fr       */
+/*   Updated: 2026/01/20 19:24:26 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,11 @@ Span::Span( void ) : _maxNumbers(10)
 	return ;
 }
 
-Span::Span( unsigned int n ) : _maxNumbers(n) {
+Span::Span( double n ) {
 	std::cout << "Specific Span constructor called" << std::endl;
+	if (n < 0 || n > INT_MAX)
+		throw std::out_of_range("You have triggered an Overflow, please check your main code");
+	_maxNumbers = static_cast<unsigned int>(n);
 	return ;
 }
 
@@ -53,8 +56,8 @@ Span& Span::operator=(const Span& other) {
 	std::cout << "Span assignment operator called" << std::endl;
 	if (this != &other) {
 		this->_maxNumbers = other._maxNumbers;
+		this->assign(other.begin(), other.end());
 	}
-	this->assign(other.begin(), other.end());
 	return (*this);
 }
 
@@ -93,7 +96,7 @@ int Span::shortestSpan( void ) {
 }
 
 int Span::longestSpan( void ) {
-	if (_maxNumbers < 2)
+	if (_maxNumbers < 2 || size() < 2)
 		throw SpanNotFound();
 	this->sort();
 	return (*max_element(begin(), end()) - *min_element(begin(), end()));
