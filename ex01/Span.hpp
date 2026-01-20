@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42lehavre.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 18:20:30 by lomont            #+#    #+#             */
-/*   Updated: 2026/01/11 19:52:24 by lomont           ###   ########.fr       */
+/*   Updated: 2026/01/20 19:19:29 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <algorithm>
 #include <list>
 #include <exception>
+#include <stdexcept>
 #include <climits>
 #include <cstdlib>
 #include <ctime>
@@ -43,7 +44,7 @@ class Span : public std::list<int>
 
 		//Canonical form
 		Span( void );
-		Span( unsigned int n );
+		Span( double n );
 		Span( const Span& src );
 		Span & operator=( const Span& other );
 		~Span( void );
